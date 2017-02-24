@@ -33,8 +33,10 @@
         </a>
       </button>
 
-      <strong><%= idea.likes.count %> Likes</strong>
-
+      <strong>
+        <a href="/ideas/<%= idea.id %>">
+        <%= idea.likes.count %> People like this idea</strong>
+        </a>
       <% if idea.user.id == @id %>
       <a href="/delete/<%= idea.id %>"><button class="btn btn-danger pull-right" type="button" name="button">Delete</button></a>
       <% end %>

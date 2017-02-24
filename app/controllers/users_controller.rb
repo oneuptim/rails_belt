@@ -84,10 +84,18 @@ class UsersController < ApplicationController
 
   def unlike_idea
     unlike = Like.where(user: User.find(session[:user_id]), idea: Idea.find(params[:id])).destroy_all
+    flash[:notice] = "Idea unliked!"
     redirect_to '/ideas'
   end
 
+  def ideas_detail
+    @id = params[:id]
+    @idea = Idea.find(@id)
+    @users_who_like = Idea.find(@idea).likes
+    # render json: @users_who_like
+    render '/users/ideas_detail'
 
+  end
 
 
 

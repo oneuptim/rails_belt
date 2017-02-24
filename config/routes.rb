@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/ideas' => 'users#ideas'
 
+  get '/ideas/:id' => 'users#ideas_detail'
+
   get '/user/:id' => 'users#profile'
 
   post '/post_idea' => 'users#create_idea'
