@@ -60,7 +60,7 @@
     <% @user_likes.each do | liked_ideas | %>
     <div class="panel-body"><%= liked_ideas.idea.idea %></div>
     <div class="panel-heading">
-      <a href="/unlike_idea/<%= liked_ideas.id %>" data-method = "post">
+      <a href="/unlike_idea/<%= liked_ideas.idea.id %>" data-method = "post">
       <button type="button" name="button" class="btn btn-default">
         <span class="glyphicon glyphicon-thumbs-down"></span>
         Unlike this idea
