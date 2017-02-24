@@ -22,16 +22,16 @@
       <div class="panel-body">  <%= idea.idea %></div>
       <div class="panel-heading">Posted on: <%= idea.created_at %>
 
-      <button type="button" name="button" class="btn btn-default">
         <a href="/like_idea/<%= idea.id %>" data-method = "post">
-        <span class="glyphicon glyphicon-thumbs-up"></span>
-        </a>
-      </button>
       <button type="button" name="button" class="btn btn-default">
-        <a href="/unlike_idea/<%= idea.id %>" data-method = "post">
-          <span class="glyphicon glyphicon-thumbs-down"></span>
-        </a>
+        <span class="glyphicon glyphicon-thumbs-up"></span>
       </button>
+    </a>
+    <a href="/unlike_idea/<%= idea.id %>" data-method = "post">
+      <button type="button" name="button" class="btn btn-default">
+          <span class="glyphicon glyphicon-thumbs-down"></span>
+      </button>
+    </a>
 
       <strong>
         <a href="/ideas/<%= idea.id %>">
