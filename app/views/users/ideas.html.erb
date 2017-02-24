@@ -1,0 +1,68 @@
+<div class="col-md-8">
+  <h3>Hi <%= @user.name %>,</h3>
+  <% if flash[:success] %>
+  <div class="alert alert-success"><%= flash[:success] %></div>
+  <% end %>
+
+  <% if flash[:notice] %>
+  <div class="alert alert-info"><%= flash[:notice] %></div>
+  <% end %>
+
+  <form class="form-group" action="/post_idea" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <textarea class="form-control" name="idea" rows="5" placeholder="Post an idea <%= @user.name %>..."></textarea>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <br>
+    <input class="btn btn-success" type="submit" name="" value="Post Idea">
+  </form>
+
+  <% @ideas.each do |idea| %>
+
+  <div class="panel panel-default">
+      <div class="panel-body">  <%= idea.idea %></div>
+      <div class="panel-heading">Posted on: <%= idea.created_at %>
+
+      <button type="button" name="button" class="btn btn-default">
+        <a href="/like_idea/<%= idea.id %>" data-method = "post">
+        <span class="glyphicon glyphicon-thumbs-up"></span>
+        </a>
+      </button>
+      <button type="button" name="button" class="btn btn-default">
+        <a href="/unlike_idea/<%= idea.id %>" data-method = "post">
+          <span class="glyphicon glyphicon-thumbs-down"></span>
+        </a>
+      </button>
+
+      <strong><%= idea.likes.count %> Likes</strong>
+
+      <% if idea.user.id == @id %>
+      <a href="/delete/<%= idea.id %>"><button class="btn btn-danger pull-right" type="button" name="button">Delete</button></a>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+
+
+
+<div class="col-md-4">
+
+  <h4>Bright Ideas
+    <a href="/user/<%= @user.id %>"><button class="btn btn-success" type="button" name="button">My Ideas</button></a>
+
+    <a href="/logout" data-method="post"><button class="btn btn-danger" type="submit" name="button">Logout</button></a></h3>
+
+  <h1>Ideas I like</h1>
+  <% @user_likes.each do | liked_ideas | %>
+  <div class="panel panel-success">
+    <div class="panel-body"><%= liked_ideas.idea %></div>
+    <div class="panel-heading">
+      <button type="button" name="button" class="btn btn-default">
+        <a href="/unlike_idea/<%= liked_ideas.id %>" data-method = "post">
+        <span class="glyphicon glyphicon-thumbs-down"></span></a>
+      </button>
+  </div>
+  <% end %>
+
+</div>
