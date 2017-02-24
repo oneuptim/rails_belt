@@ -20,7 +20,7 @@
 
   <div class="panel panel-default">
       <div class="panel-body">  <%= idea.idea %></div>
-      <div class="panel-heading">Posted on: <%= idea.created_at %>
+      <div class="panel-heading">Posted by <a href="/user/<%= idea.user.id %>"><strong><%= idea.user.name %></strong></a>
 
         <a href="/like_idea/<%= idea.id %>" data-method = "post">
       <button type="button" name="button" class="btn btn-default">
