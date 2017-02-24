@@ -1,44 +1,47 @@
-<div class="col-md-8">
+<div class="col-md-4">
   <h3>Dashboard</h3>
+  <hr>
+  <h4>More about this idea</h4>
   <div class="panel panel-info">
     <div class="panel-heading">
       <p><%= @idea.idea %></p>
-
-      <h3>People who like this idea!</h3>
-      <% @users_who_like.each do |list| %>
-      <p><%= list.user.id %></p>
-      <p><%= list.user.name %></p>
-
-      <% end %>
-
   </div>
 </div>
-
 </div>
 
 
 
 
-<div class="col-md-4">
+<div class="col-md-8">
 
   <h4>Bright Ideas
-    <a href="/ideas"><button class="btn btn-success" type="button" name="button">All Ideas</button></a>
-    <a href="/logout" data-method="post"><button class="btn btn-danger" type="button" name="button">Logout</button></a></h3>
+    <a href="/ideas"><button class="btn btn-success " type="button" name="button">All Ideas</button></a>
+    <a href="/logout" data-method="post"><button class="btn btn-danger pull-right" type="button" name="button">Logout</button></a></h3>
+    <hr>
+    <h3>People who like this idea</h3>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Alias</th>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users_who_like.each do |list| %>
+          <tr>
+            <td>
+            <a href="/user/<%= list.user.id %>">
+              <%= list.user.alias %>
+            </td>
+          </a>
+            <td><%= list.user.name %></td>
+            <td><%= list.user.email %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-  <div class="panel panel-success">
-    <div class="panel-heading">
-      <h1>Stats</h1>
-  </div>
-  <div class="panel-body">
-    <div class="col-sm-6">
-      Ideas Posted
-    </div>
 
-    <div class="col-sm-6">
-      Likes
-    </div>
-
-
-  </div>
 
 </div>

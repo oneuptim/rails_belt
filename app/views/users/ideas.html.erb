@@ -56,14 +56,16 @@
     <a href="/logout" data-method="post"><button class="btn btn-danger" type="submit" name="button">Logout</button></a></h3>
 
   <h1>Ideas I like</h1>
-  <% @user_likes.each do | liked_ideas | %>
   <div class="panel panel-success">
-    <div class="panel-body"><%= liked_ideas.idea %></div>
+    <% @user_likes.each do | liked_ideas | %>
+    <div class="panel-body"><%= liked_ideas.idea.idea %></div>
     <div class="panel-heading">
+      <a href="/unlike_idea/<%= liked_ideas.id %>" data-method = "post">
       <button type="button" name="button" class="btn btn-default">
-        <a href="/unlike_idea/<%= liked_ideas.id %>" data-method = "post">
-        <span class="glyphicon glyphicon-thumbs-down"></span></a>
+        <span class="glyphicon glyphicon-thumbs-down"></span>
+        Unlike this idea
       </button>
+    </a>
   </div>
   <% end %>
 

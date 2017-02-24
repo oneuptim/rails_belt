@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @id = session[:user_id]
+    @id = params[:id]
     @user = User.find(@id)
     @user_ideas_total = Idea.where(user: User.find(@id))
     @user_likes_total = Like.where(user: User.find(@id))
