@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :check_status, :except => [:login, :register, :auth, :create]
+  before_action :check_status, :except => [:index, :register, :login, :create_user]
 
   def index
     render '/users/index'
@@ -108,8 +108,9 @@ class UsersController < ApplicationController
   end
 
   private
-  # def check_status
-  #   if !session[:user_id]
-  #     redirect_to '/'
-  # end
+  def check_status
+    if !session[:user_id]
+      redirect_to '/'
+    end
+  end
 end

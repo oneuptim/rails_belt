@@ -23,12 +23,12 @@
       <div class="panel-heading">Posted by <a href="/user/<%= idea.user.id %>"><strong><%= idea.user.name %></strong></a>
 
         <a href="/like_idea/<%= idea.id %>" data-method = "post">
-      <button type="button" name="button" class="btn btn-default">
+      <button type="button" name="button" class="btn btn-default pull-right">
         <span class="glyphicon glyphicon-thumbs-up"></span>
       </button>
     </a>
     <a href="/unlike_idea/<%= idea.id %>" data-method = "post">
-      <button type="button" name="button" class="btn btn-default">
+      <button type="button" name="button" class="btn btn-default pull-right">
           <span class="glyphicon glyphicon-thumbs-down"></span>
       </button>
     </a>
